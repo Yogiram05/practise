@@ -22,16 +22,13 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
-            cd ~/practise app
+            cd "$HOME/practise app"
 
             echo "Pulling latest code..."
             git pull origin main
 
             echo "Installing dependencies..."
             npm install
-
-            echo "Installing PM2..."
-            sudo npm install -g pm2
 
             echo "Stopping old processes..."
             pm2 delete backend || true
